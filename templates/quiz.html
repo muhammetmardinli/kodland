@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Uygulaması - Sınav</title>
+    <style>
+        .question-box {
+            padding: 20px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 15px;
+            background: #f4f4f4;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .option label {
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'common.html' %}
+
+    {% block title %}Sınav{% endblock %}
+
+    {% block content %}
+    <form method="post">
+        {% for question in questions %}
+        <div class="question-box">
+            <h3>{{ question.question_text }}</h3>
+            <div class="options">
+                {% for option in question.options %}
+                <div class="option">
+                    <input type="radio" id="question_{{ question.id }}_{{ loop.index }}" name="question_{{ question.id }}" value="{{ option }}" required>
+                    <label for="question_{{ question.id }}_{{ loop.index }}">{{ option }}</label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit">Sonuçları Gönder</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

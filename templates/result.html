@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonuç</title>
+    <style>
+        .results-container {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 15px;
+        }
+
+        .result-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .result-item p {
+            font-size: 1em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'common.html' %}
+
+    {% block title %}Sonuç{% endblock %}
+
+    {% block content %}
+    <div class="results-container">
+        <h2>Sınav Sonucu</h2>
+        <div class="result-item">
+            <h3>Sonuç:</h3>
+            <p>{{ score }} / {{ total_questions }}</p>
+        </div>
+        <div class="result-item">
+            <h3>En Yüksek Puan:</h3>
+            <p>{{ highest_score }}</p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
